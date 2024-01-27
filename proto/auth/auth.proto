@@ -11,11 +11,13 @@ service Auth{
 message RegisterRequest{
   string email = 1;
   string password = 2;
+  string name = 3;
 }
 
 message  RegisterResponse{
   int64 user_id = 1;
-  string token = 2;
+  string access_token = 2;
+  string refresh_token = 3;
 }
 
 message LoginRequest{
@@ -24,13 +26,17 @@ message LoginRequest{
 }
 
 message LoginResponse{
-  string token = 1;
+  int64 user_id = 1;
+  string access_token = 2;
+  string refresh_token = 3;
 }
 
 message RefreshRequest{
-  string refreshToken = 1;
+  int64 user_id = 1;
+  string refreshToken = 2;
 }
 
 message  RefreshResponse{
-  string access_token = 2;
+  string access_token = 1;
+  string refresh_token = 3;
 }
